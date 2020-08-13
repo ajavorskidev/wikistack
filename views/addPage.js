@@ -6,7 +6,12 @@ module.exports = () => layout(html`
   <hr>
   <form method="POST" action="/wiki/">
     
-    <div>PLACEHOLDER FOR AUTHOR NAME FIELD</div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">Author Name</label>
+      <div class="cp;-sm-10">
+        <input id="name" name="name" type="text" class="form-control"/>
+      </div>
+    </div>
     
     <div>PLACEHOLDER FOR AUTHOR EMAIL FIELD</div>
     

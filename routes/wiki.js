@@ -1,9 +1,10 @@
 const express = require('express');
 const addPage = require('../views/addPage');
+const layout = require('../views/layout')
 const wikiRouter = express.Router();
 
 wikiRouter.get('/', (req, res, next) => {
-    res.send(' GET Testing root')
+    res.send(layout(''));
 });
 wikiRouter.get('/add', (req, res, next) => {
     res.send(addPage());

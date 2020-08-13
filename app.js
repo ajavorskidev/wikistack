@@ -2,7 +2,6 @@ const express = require('express');
 const morgan = require('morgan');
 const { db, Page, User } = require('./models');
 const userRouter = require('./routes/users');
-const layout = require('./views/layout')
 const wikiRouter = require('./routes/wiki');
 
 
@@ -20,19 +19,20 @@ app.use(express.urlencoded({ extended: false })); // Parses the body of a reques
 /* *Routers* */
 app.use('/wiki/', wikiRouter);
 app.use('/user/', userRouter);
-
 app.get('/', (req, res) => {
-    const data = layout('');
-    res.send(data);
+    res.redirect('/wiki');
 });
+app.get('/', (req, res) => {
+    res.send(layout(''));
+})
 
 const init = async () => {
     // await Page.sync();
     // await User.sync();
     db.sync(); // Add {force: true} inside .sync() if I need to sync a new table: WARNING: WILL CLEAR AND MAKE NEW TABLES IN DATABASE
 
-    app.listen(1337, () => {
-        console.log('Listening to port: ', 1337)
+    app.listen(3000, () => {
+        console.log('Listening to port: ', 3000)
     });
 }
 
